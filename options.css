@@ -99,8 +99,27 @@ input:focus {
   background: var(--accent-hover);
 }
 
-.btn-primary:active {
+.btn-primary:active,
+.btn-secondary:active {
   transform: scale(0.98);
+}
+
+.btn-secondary {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .status-message {
