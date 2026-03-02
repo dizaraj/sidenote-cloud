@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideNote Cloud Settings</title>
+    <link rel="stylesheet" href="options.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="glass-panel">
+            <h1>Database Settings</h1>
+            <p class="subtitle">Connect your Supabase project to sync your notes to the cloud.</p>
+
+            <form id="settingsForm">
+                <div class="input-group">
+                    <label for="supabaseUrl">Supabase URL</label>
+                    <input type="text" id="supabaseUrl" placeholder="https://zjcawqowoxfwnttaevam.supabase.co" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="supabaseKey">Supabase Anon Key</label>
+                    <input type="password" id="supabaseKey" placeholder="eyJhbGciOiJIUzI1NiIsIn..." required>
+                </div>
+
+                <button type="submit" class="btn-primary">Save Settings</button>
+            </form>
+
+            <div id="status" class="status-message hidden">Settings saved successfully!</div>
+
+            <div class="instructions">
+                <h3>Database Setup Required</h3>
+                <p>You must run this SQL snippet in your Supabase SQL Editor to create the correct table for SideNote
+                    Cloud:</p>
+                <pre><code>CREATE TABLE public.notes (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  local_id text UNIQUE NOT NULL,
+  title text,
+  body text,
+  urls jsonb,
+  created_at timestamp with time zone DEFAULT now()
+);
+
+-- Enable RLS and setup Anon access if needed (optional for simple usage)
+ALTER TABLE public.notes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Enable all for anon" ON public.notes FOR ALL USING (true) WITH CHECK (true);
+
+-- Add is_archived Flag to Notes
+ALTER TABLE public.notes ADD COLUMN is_archived boolean DEFAULT false;
+</code></pre>
+            </div>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>
