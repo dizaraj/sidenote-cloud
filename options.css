@@ -169,3 +169,53 @@ pre {
 code {
   font-family: 'Courier New', Courier, monospace;
 }
+
+/* App Footer */
+.app-footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stars-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.review-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #334155;
+  color: var(--text-main) !important;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.review-btn:hover {
+  background: #475569;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--text-main);
+}
